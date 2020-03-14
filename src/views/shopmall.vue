@@ -5,7 +5,14 @@
     <Category :categroy="category" />
     <AdBanner :adimgsrc="adimgsrc"></AdBanner>
     <GoodsRecomment :recommend="recommend"></GoodsRecomment>
-    <Floor1 :goods='floor1'></Floor1>
+    <Floor :goods="floor1" :title="floors.floor1"></Floor>
+    <Floor :goods="floor2" :title="floors.floor2"></Floor>
+    <Floor :goods="floor3" :title="floors.floor3"></Floor>
+    <Card>
+      <div class="cardtitle">商品推荐</div>
+      <VantList :goods="hotgoods"></VantList>
+    </Card>
+
     <div>haha</div>
   </div>
 </template>
@@ -17,7 +24,9 @@ import Category from "./shopmall/categroy";
 import { request } from "../network/request";
 import AdBanner from "../components/show/adbanner";
 import GoodsRecomment from "./shopmall/goodsrecomment";
-import Floor1 from "./shopmall/floor1"
+import Floor from "./shopmall/floor1";
+import VantList from "../components/common/vant_list";
+import Card from "../components/show/card_slot";
 
 export default {
   name: "ShopMall",
@@ -29,7 +38,11 @@ export default {
       adimgsrc: null,
       swapimages: [],
       recommend: [],
-      floor1:[]
+      floors: {},
+      floor1: [],
+      floor2: [],
+      floor3: [],
+      hotgoods:[]
     };
   },
   components: {
@@ -38,7 +51,9 @@ export default {
     Category,
     AdBanner,
     GoodsRecomment,
-    Floor1
+    Floor,
+    VantList,
+    Card
   },
   created() {
     request({
@@ -51,7 +66,11 @@ export default {
           this.adimgsrc = res.data.data.advertesPicture.PICTURE_ADDRESS;
           this.swapimages = res.data.data.slides;
           this.recommend = res.data.data.recommend;
-          this.floor1=res.data.data.floor1;
+          this.floors = res.data.data.floorName;
+          this.floor1 = res.data.data.floor1;
+          this.floor2 = res.data.data.floor2;
+          this.floor3 = res.data.data.floor3;
+          this.hotgoods = res.data.data.hotGoods;
         }
       })
       .catch(err => {
@@ -62,4 +81,10 @@ export default {
 </script>
 
 <style>
+.cardtitle{
+  font-size: 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.2rem;
+}
 </style>

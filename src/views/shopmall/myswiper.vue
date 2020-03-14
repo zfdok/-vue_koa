@@ -5,10 +5,10 @@
     <swiper-slide v-for="(item, index) in recommend" :key="index" class="rec_content">
       <img :src="item.image" alt srcset />
       <div>{{item.goodsName}}</div>
-      <div>￥{{item.price}}(￥{{item.mallPrice}})</div>
+      <div style="word-break:break-all;">￥{{item.price | moneyformat}}(￥{{item.mallPrice| moneyformat}})</div>
     </swiper-slide>
     <!-- Optional controls -->
-    <div class="swiper-scrollbar"   slot="scrollbar"></div>
+    <div class="swiper-scrollbar" slot="scrollbar"></div>
   </swiper>
 </template>
 
@@ -18,12 +18,12 @@ export default {
   data() {
     return {
       swiperOption: {
-        autoplay:true,
-        loop:true,
+        autoplay: true,
+        loop: true,
         slidesPerView: 3,
-        scrollbar:{
-          el:'.swiper-scrollbar',
-          draggable: true,
+        scrollbar: {
+          el: ".swiper-scrollbar",
+          draggable: true
         }
 
         // some swiper options/callbacks
@@ -41,6 +41,11 @@ export default {
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
+    }
+  },
+  filters: {
+    moneyformat(money) {
+      return money.toFixed(2) ;
     }
   },
   mounted() {

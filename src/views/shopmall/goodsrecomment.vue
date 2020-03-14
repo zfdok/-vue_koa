@@ -1,13 +1,13 @@
 <template >
   <Card class="goodsrec">
     <div class="goodsrectitle">商品推荐</div>
-    <MySwarper :recommend=recommend></MySwarper>
+    <MySwarper :recommend="recommend"></MySwarper>
   </Card>
 </template>
 
 <script>
 import Card from "../../components/show/card_slot";
-import MySwarper from './myswiper'
+import MySwarper from "./myswiper";
 export default {
   name: "GoodsRecomment",
   data() {
@@ -20,15 +20,15 @@ export default {
     };
   },
   props: {
-      recommend:Array
+    recommend: Array
   },
   components: {
     Card,
     MySwarper
   },
-  methods:{
-      callback(){}
-  },
+  methods: {
+    callback() {}
+  }
 };
 </script>
 
