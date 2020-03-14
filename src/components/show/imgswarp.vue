@@ -2,7 +2,7 @@
   <div >
     <van-swipe :autoplay="3000" class="img-swaper">
       <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img v-lazy="image" class="swarp-imgs" />
+        <img v-lazy="image.image" class="swarp-imgs" />
       </van-swipe-item>
     </van-swipe>
   </div>
@@ -16,12 +16,11 @@ export default {
   name: "ImgSwarp",
   data() {
     return {
-      images: [
-        "http://images.baixingliangfan.cn/advertesPicture/20180407/20180407175040_1780.jpg",
-        "http://images.baixingliangfan.cn/advertesPicture/20180407/20180407175111_9509.jpg",
-        "http://images.baixingliangfan.cn/advertesPicture/20180407/20180407175142_6947.jpg"
-      ]
+      
     };
+  },
+  props:{
+    images:Array
   }
 };
 </script>
@@ -29,6 +28,7 @@ export default {
 <style scoped>
 .img-swaper {
   width: 20rem;
+  height: 8.875rem;
   clear: both;
 }
 .swarp-imgs {

@@ -33,7 +33,6 @@
       }
       //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
       refreshRem();
-
       win.addEventListener("resize", function () {
         clearTimeout(tid); //防止执行两次
         tid = setTimeout(refreshRem, 300);
