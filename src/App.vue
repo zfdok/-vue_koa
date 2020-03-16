@@ -1,15 +1,13 @@
 <template>
   <div id="app">
-    <ShopMall></ShopMall>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import ShopMall from "./views/shopmall";
 export default {
   name: "App",
   components: {
-    ShopMall
   }
 };
 </script>

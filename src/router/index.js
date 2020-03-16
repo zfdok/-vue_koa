@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ShopMall from '@/views/shopmall'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -9,6 +10,11 @@ const routes = [
     path: '/',
     name: 'ShopMall',
     component: ShopMall
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: ()=>import('../views/register')
   },
 ]
 
